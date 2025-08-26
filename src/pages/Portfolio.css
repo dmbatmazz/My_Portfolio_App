@@ -1,0 +1,283 @@
+/* --- Renk Değişkenleri (işlev odaklı) --- */
+:root {
+  --bg-main: #0f0f0f;                     /* Genel arka plan */
+  --text-main: white;                      /* Ana metin rengi */
+  --text-muted: #f0f0f0;                   /* Açıklama/metin rengi */
+  --box-bg: rgba(255,255,255,0.05);       /* Portfolio kutu arka plan */
+  --box-border: rgba(255,255,255,0.1);    /* Kutunun sınır rengi */
+  --box-shadow-default: rgba(0,0,0,0.45); /* Kutunun gölge rengi */
+  --box-shadow-hover: rgba(0,0,0,0.6);    /* Hover gölge rengi */
+
+  --border-gradient-start: #00ff9d;       /* Border animasyon başı */
+  --border-gradient-mid1: #00ccff;        /* Border animasyon ara renk */
+  --border-gradient-mid2: #9b6dff;        /* Border animasyon ara renk */
+  --border-gradient-end: #8400ff;         /* Border animasyon sonu */
+
+  --hover-overlay-bg: rgba(0,0,0,0.65);   /* Hover overlay arka plan */
+  --hover-text: #b19cff;                  /* Hover overlay yazı rengi */
+  --project-link: #b19cff;                /* Proje link rengi */
+  --project-link-hover: #9b7ffe;          /* Proje link hover rengi */
+  --modal-bg: #1e1e1e;     
+  --slider-btn-color: #b19cff;               /* Modal arka plan */
+}
+
+/* --- Genel Stil --- */
+html, body {
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+}
+
+/* Ana kapsayıcı */
+.portfolio-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 5px;
+  text-align: center;
+}
+
+.portfolio-title {
+  margin-bottom: 30px;
+  margin-top: 100px;
+  color: var(--text-main);
+  font-size: 2.2rem;
+  color: var(--title-about);
+  font-family: 'Lato', sans-serif;
+  font-weight: 310;
+}
+
+/* Grid yapısı */
+.portfolio-grid {
+  margin-right: 10px;
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* --- PORTFOLIO BOX --- */
+.portfolio-box {
+  position: relative;
+  background: var(--box-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 18px;
+  aspect-ratio: 1/1;
+  width: 215px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--box-border);
+  box-shadow: 0 6px 18px var(--box-shadow-default);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Gradient border animasyonu */
+.portfolio-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    var(--border-gradient-start),
+    var(--border-gradient-mid1),
+    var(--border-gradient-mid2),
+    var(--border-gradient-end)
+  );
+  background-size: 300% 300%;
+  animation: borderFlow 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  z-index: 1;
+}
+
+/* İçerik (proje adı) */
+.portfolio-box span {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Hover overlay yazı */
+.portfolio-hover {
+  position: absolute;
+  inset: 0;
+  background: var(--hover-overlay-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--hover-text);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2;
+}
+
+/* Hover efekti */
+.portfolio-box:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 10px 25px var(--box-shadow-hover);
+}
+
+.portfolio-box:hover span {
+  transform: translateY(-30%);
+  opacity: 0;
+}
+
+.portfolio-box:hover .portfolio-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Border animasyonu */
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Overlay (modal arkası) */
+.portfolio-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal kutusu */
+.portfolio-modal {
+  background: var(--modal-bg);
+  color: var(--text-main);
+  border-radius: 12px;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  animation: zoomIn 0.3s ease forwards;
+  text-align: center;
+  cursor: default;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Proje içeriği */
+.project-content {
+  text-align: center;
+}
+
+.project-images img,
+.project-images-slider img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 70vh;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.project-content a {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: 600;
+  color: var(--project-link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-content a:hover {
+  color: var(--project-link-hover);
+}
+
+/* Slider */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+  color: var(--btn-text-color);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slider-btn.prev { left: -40px; }
+.slider-btn.next { right: -40px; }
+.slider-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* Responsive ayarlar */
+@media (max-width: 1024px) {
+  .portfolio-hover span { display: none; }
+  .portfolio-title { margin-top:70px; margin-bottom: 80px; color: var(--text-main);font-size: 2.5rem;color: var(--title-about);font-family: 'Lato', sans-serif;font-weight: 310; }
+
+}
+
+@media (max-width: 920px) {
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-title { margin-top: 85px; font-size: 1.4rem; }
+  .portfolio-box { width: 90%; }
+  .portfolio-title { margin-top: 55px; margin-bottom: 60px; color: var(--text-main);font-size: 2rem;color: var(--title-about);font-family: 'Lato', sans-serif;font-weight: 310; }
+
+}
+
+@media (max-width: 480px) {
+  .portfolio-title { margin-top: 45px; color: var(--text-main);font-size: 1.5rem;color: var(--title-about);font-family: 'Lato', sans-serif;font-weight: 310; }
+  .project-images img,
+  .project-images-slider img { width: 90%; max-height: 60vh; }
+  .slider-btn.prev { left: 5px; }
+  .slider-btn.next { right: 5px; }
+}
+
+@media (max-width: 412px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .portfolio-modal { max-width: 700px; }
+  .project-images img,
+  .project-images-slider img { max-width: 90%; max-height: 65vh; }
+}
+
+@media (min-width: 1025px) {
+  .portfolio-modal { max-width: 900px; }
+  .project-images img,
+  .project-images-slider img { max-width: 95%; max-height: 70vh; }
+}
