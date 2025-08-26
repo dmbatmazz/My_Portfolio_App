@@ -4,7 +4,7 @@ import avatar from "../assets/avatar.png"; // senin görselin
 export default function Hero() {
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:defnemalis8@outlook.com";
+    window.location.href = "mailto:defnemelis8@outlook.com";
   };
 
   return (
