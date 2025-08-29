@@ -351,7 +351,8 @@
 @media (min-width: 381px) and (max-width: 400px) {
   .contact-content {
     width: 300px;
-    height: 660px;
+    height: 600px;
+    margin-bottom: 130px;
   }
   .contact-popup .social-buttons {
     display: grid;
