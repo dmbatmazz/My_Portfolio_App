@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Instagram, Linkedin, Github, Share2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { X } from 'lucide-react';
 import './ContactMe.css';
 
 const ContactMe = ({ isOpen, onClose }) => {
@@ -76,6 +77,8 @@ const ContactMe = ({ isOpen, onClose }) => {
   return (
     <div className={`contact-popup ${isOpen ? 'open' : ''}`} onClick={handleBackgroundClick}>
       <div className="contact-content">
+        <button className="close-btn" onClick={onClose}>
+          <X size={24} /> </button>
         <h2>Get in Touch!</h2>
 
         {status === 'success' && <div className="status-message success">✅ Message sent successfully!</div>}

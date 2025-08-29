@@ -278,102 +278,189 @@
   border: 1px solid var(--error-border);
 }
 
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.5rem; /* Eğer × kullanıyorsan */
+  cursor: pointer;
+  z-index: 1100;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  color: var(--primary-gradient-end);
+}
+
 /* --- Responsive Mobil Düzenlemeler --- */
-@media (max-width: 1024px) {
-  .social-buttons {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    max-width: 600px;
+/* 0–380px */
+@media (max-width: 380px) {
+  .contact-content {
+    width: 250px;
+    height: 510px;
   }
-  .contact-content h2{
-    margin-top: 0px;
-    margin-bottom: 40px;
-  }
-    .submit-btn{
-    max-width: 360px;
-  }
-}
-
-/* --- Tablet Düzenleme --- */
-
-@media (max-width: 768px) {
-  .social-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* otomatik sığdır */
-    gap: 16px; /* tablet için daha geniş boşluk */
-    justify-items: center;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .submit-btn{
-    max-width: 360px;
-  }
-  .contact-content h2{
-    margin-top: 0px;
-    margin-bottom: 40px;
-  }
-
-  .social-button {
-    padding: clamp(12px, 2.5vw, 18px); /* biraz daha büyük */
-    aspect-ratio: 1 / 1; /* kare boyut */
-  }
-
-  .social-icon {
-    width: clamp(28px, 4vw, 36px);
-    height: clamp(28px, 4vw, 36px);
-    font-size: clamp(28px, 4vw, 36px);
-  }
-
-  .social-button span {
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-  }
-}
-
-/* --- Telefon Düzenleme --- */
-@media (max-width: 480px) {
-  .social-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* maksimum 3 yan yana */
-    gap: 10px;                             /* butonlar arası boşluk */
-    justify-items: center;                  /* alt satırlar ortalanacak */
-    max-width: 100%;
-    width: 100%;
-  }
-
   .contact-content h2 {
-    margin-top: 0px;
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
   }
-
-  .info-item{
-    margin-bottom: 0px;
+  .contact-popup .social-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-items: center;
+    margin-bottom: 25px;
   }
-
-  .social-button {
-    width: 80px;       /* tüm butonlar eşit genişlik */
-    height: 80px;      /* tüm butonlar eşit yükseklik */
-    aspect-ratio: 1 / 1; 
-    padding: 0;        /* padding kaldırıldı, icon ve span içeride yerleşecek */
+  .contact-popup .social-button {
+    width: 70px;
+    height: 70px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+  .contact-popup .social-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+  .contact-popup .social-button span {
+    font-size: 0.7rem;
+  }
+  .contact-popup .info-item {
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+  }
+  .contact-popup .form-group input,
+  .contact-popup .form-group textarea {
+    font-size: 0.8rem;
+  }
+  .contact-popup .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    max-width: 280px;
+  }
+}
 
-  .social-icon {
+/* 381–400px */
+@media (min-width: 381px) and (max-width: 400px) {
+  .contact-content {
+    width: 300px;
+    height: 660px;
+  }
+  .contact-popup .social-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .contact-popup .social-button {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* 401–480px */
+@media (min-width: 401px) and (max-width: 480px) {
+  .contact-popup .social-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+  .contact-content h2 {
+    margin-bottom: 30px;
+  }
+  .contact-popup .social-button {
+    width: 70px;
+    height: 70px;
+  }
+  .contact-popup .social-icon {
     width: 36px;
     height: 36px;
     font-size: 36px;
   }
-
-  .social-button span {
+  .contact-popup .social-button span {
     font-size: 0.8rem;
   }
+  .contact-content {
+    margin: 60px 15px;
+    height: 720px;
+  }
+}
 
-  .contact-content{
-    margin: 60px 10px;
+/* 481–700px */
+@media (min-width: 481px) and (max-width: 700px) {
+  .contact-content {
+    width: 450px;
+    height: 530px;
+  }
+  .contact-popup .social-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    justify-items: center;
+  }
+  .contact-popup .social-button {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* 701–768px */
+@media (min-width: 701px) and (max-width: 768px) {
+  .contact-popup .social-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 16px;
+    justify-items: center;
+  }
+  .contact-popup .submit-btn {
+    max-width: 360px;
+  }
+  .contact-content h2 {
+    margin-bottom: 40px;
+  }
+  .contact-popup .social-button {
+    padding: clamp(12px, 2.5vw, 18px);
+  }
+  .contact-popup .social-icon {
+    width: clamp(28px, 4vw, 36px);
+    height: clamp(28px, 4vw, 36px);
+    font-size: clamp(28px, 4vw, 36px);
+  }
+  .contact-popup .social-button span {
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  }
+}
+
+/* 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-popup .social-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    max-width: 600px;
+  }
+  .contact-content h2 {
+    margin-bottom: 40px;
   }
 
+  .contact-popup .submit-btn {
+    max-width: 360px;
+  }
+}
+
+@media (width: 1024px) and (height:600px) {
+  
+  .contact-popup .contact-content{
+    margin-bottom: 60px; 
+    height: 500px;
+  }
 }
 
 
