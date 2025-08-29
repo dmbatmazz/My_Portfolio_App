@@ -1,6 +1,7 @@
 // components/Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import dmbLogo from "./dmb.png";  // <-- Logoyu import ettik
 
 export default function Navbar({ menuOpen, setMenuOpen, setContactOpen }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
@@ -20,7 +21,13 @@ export default function Navbar({ menuOpen, setMenuOpen, setContactOpen }) {
 
   return (
     <nav className="navbar">
-      <div className="logo">DMB</div>
+      <div className="logo">
+        <img 
+          src={dmbLogo} 
+          alt="DMB Logo" 
+          style={{ height: "60px" }} // istediğin boyuta göre ayarla
+        />
+      </div>
 
       {isMobile && (
         <div className="menu-toggle" onClick={() => setMenuOpen(true)}>
@@ -105,17 +112,16 @@ export default function Navbar({ menuOpen, setMenuOpen, setContactOpen }) {
             </NavLink>
           </li>
           <li>
-  <button 
-    className="contact-btn" 
-    onClick={() => {
-      setMenuOpen(false);
-      setContactOpen(true);
-    }}
-  >
-    Contact Me
-  </button>
-</li>
-
+            <button 
+              className="contact-btn" 
+              onClick={() => {
+                setMenuOpen(false);
+                setContactOpen(true);
+              }}
+            >
+              Contact Me
+            </button>
+          </li>
         </div>
       )}
     </nav>

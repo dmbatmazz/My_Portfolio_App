@@ -266,7 +266,29 @@ body {
     font-size: 32px;
     cursor: pointer;
   }
+
+  .hero {
+    padding-bottom: 220px; /* resmin sabit durması için altta boşluk bırak */
+  }
+
+  .hero-image {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-main); /* istersen arka plan rengi */
+    z-index: 999;
+  }
+
+  .hero-image img {
+    width: 200px;
+    max-width: 80%;
+    height: auto;
+  }
 }
+
 
 /* ----------- Masaüstü (1181px ve üzeri) ----------- */
 @media (min-width: 1181px) {
@@ -314,3 +336,22 @@ body {
     font-size: 16px;
   }
 }
+
+@media(min-height: 800px) and (max-height: 1000px)  {
+  .hero-image img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-text {
+    margin-top: 50px;
+  }
+}
+/*
+@media (min-height: 1001px) {
+  .hero .hero-text{
+    align-items: center;
+    justify-content: center;
+  }
+}
+  */
