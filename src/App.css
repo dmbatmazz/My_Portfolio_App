@@ -283,9 +283,13 @@ body {
   }
 
   .hero-image img {
-    width: 200px;
+    width: 180px;
     max-width: 80%;
     height: auto;
+  }
+
+  .hero-text {
+    margin-bottom: 30px;
   }
 }
 
