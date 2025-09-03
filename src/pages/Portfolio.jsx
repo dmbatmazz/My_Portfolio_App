@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./Portfolio.css";
+import avatar from "../assets/avatar.png"; 
+import { Instagram, Linkedin, Github, Twitter } from 'lucide-react';
+
 
 const projects = [
   { name: "TCP Server-Client", desc: "View More" },
@@ -157,6 +160,13 @@ const getLinkLabelByProject = (name) => {
   }
 };
 
+const socialLinks = [
+    { name: 'Instagram', icon: <Instagram />, url: 'https://instagram.com/dmbatmazz' },
+    { name: 'LinkedIn', icon: <Linkedin />, url: 'https://linkedin.com/in/dmbatmazz' },
+    { name: 'GitHub', icon: <Github />, url: 'https://github.com/dmbatmazz' },
+    { name: 'X', icon: <Twitter />, url: 'https://twitter.com/dmbatmazz' },
+  ];
+
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [slideIndex, setSlideIndex] = useState(0);
@@ -176,6 +186,31 @@ export default function Portfolio() {
 
   return (
     <div className="portfolio-wrapper">
+
+      {/* --- PROFİL KARTI --- */}
+      <div className="profile-card">
+        <img src={avatar} alt="Defne Melis Batmaz" className="profile-avatar" />
+        <h2 className="profile-name">Defne Melis Batmaz</h2>
+        <p className="profile-email">defnemelis8@outlook.com</p>
+        <p className="profile-location">Ankara, TR</p>
+
+        <div className="profile-buttons">
+          {socialLinks.map((link, index) => (
+            <a
+              key={index}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="profile-btn"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="profile-icon">{link.icon}</span>
+              <span>{link.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       <h2 className="portfolio-title">My Projects</h2>
 
       <div className="portfolio-grid">

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Instagram, Linkedin, Github, Share2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { X } from 'lucide-react';
 import './ContactMe.css';
@@ -66,13 +65,7 @@ const ContactMe = ({ isOpen, onClose }) => {
     }
   };
 
-  const socialLinks = [
-    { name: 'Instagram', icon: <Instagram />, url: 'https://instagram.com/dmbatmazz' },
-    { name: 'LinkedIn', icon: <Linkedin />, url: 'https://linkedin.com/in/dmbatmazz' },
-    { name: 'GitHub', icon: <Github />, url: 'https://github.com/dmbatmazz' },
-    { name: 'TikTok', icon: <Share2 />, url: 'https://tiktok.com/@dmbatmazz' },
-    { name: 'Email', icon: <Mail />, url: 'mailto:defnemelis8@outlook.com' },
-  ];
+ 
 
   return (
     <div className={`contact-popup ${isOpen ? 'open' : ''}`} onClick={handleBackgroundClick}>
@@ -84,33 +77,7 @@ const ContactMe = ({ isOpen, onClose }) => {
         {status === 'success' && <div className="status-message success">✅ Message sent successfully!</div>}
         {status === 'error' && <div className="status-message error">❌ Message failed to send. Please try again.</div>}
 
-        <div className="social-buttons">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-button"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <span className="social-icon">{link.icon}</span>
-              <span>{link.name}</span>
-            </a>
-          ))}
-        </div>
-
-        <div className="contact-info">
-          <div className="info-item">
-            <Mail size={20} />
-            <span>defnemelis8@outlook.com</span>
-          </div>
-          <div className="info-item">
-            <MapPin size={20} />
-            <span>Ankara, TR</span>
-          </div>
-        </div>
-
+       
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-row">
             <div className="form-group">
