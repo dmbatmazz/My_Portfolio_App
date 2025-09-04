@@ -1,6 +1,6 @@
 /* --- Renk Değişkenleri (işlev odaklı) --- */
 :root {
-  --bg-main: #1e1e1e;          /* Genel arka plan */
+  --bg-main: #0a0a0a;          /* Genel arka plan */
   --text-main: white;           /* Ana metin rengi */
   --text-muted: #ccc;           /* Açık gri/metin açıklama rengi */
 
@@ -12,15 +12,17 @@
 
   --hero-role: #9891ff;         /* Hero bölümündeki rol rengi */
 }
-
 /* --- Genel Stil --- */
-body {
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%; /* ekran yüksekliğini zorla */
+  min-height: 100vh; /* en az tüm ekran kadar olsun */
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-main);
+  background: linear-gradient(to bottom, #0a0a0a, #0a0a0a, #100329); 
   color: var(--text-main);
 }
+
 
 /* Blur efekti main-content üzerinde */
 .main-content {
@@ -43,7 +45,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--bg-main);
   z-index: 10;
 }
 
@@ -272,13 +273,12 @@ body {
   }
 
   .hero-image {
-    position: fixed !important;
+    position: fixed ;
     bottom: 0;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-main); /* istersen arka plan rengi */
     z-index: 999;
   }
 

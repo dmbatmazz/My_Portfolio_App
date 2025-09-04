@@ -1,10 +1,10 @@
 /* --- Renk Değişkenleri (işlev odaklı) --- */
 :root {
-  --bg-about: #0F0F0F;            /* About section arka plan */
+  --bg-about: #0A0A0A;            /* About section arka plan */
   --text-about-main: #111;        /* About kutu içi ana metin */
   --text-about-muted: #ccc;       /* Açıklama/paragraf metni */
   --title-about: #b9b5ff;         /* About başlık rengi */
-  --box-bg: rgba(255,255,255,0.05); /* Kutunun iç arka planı */
+  --box-bg: #0A0A0A; /* Kutunun iç arka planı */
   --box-shadow-default: rgba(0,0,0,0.45);
   --box-shadow-hover: rgba(0,0,0,0.6);
   --text-box-title: white;        /* About box başlık metni */
@@ -21,7 +21,6 @@
 .about-wrapper {
   min-height: 100vh;
   padding-top: 100px;
-  background-color: var(--bg-about);
   display: flex;
   flex-direction: column;
   align-items: center;

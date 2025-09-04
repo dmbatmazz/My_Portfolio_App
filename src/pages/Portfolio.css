@@ -1,6 +1,6 @@
 /* --- Renk Değişkenleri (işlev odaklı) --- */
 :root {
-  --bg-main: #0f0f0f;                     /* Genel arka plan */
+  --bg-main: #0A0A0A;                     /* Genel arka plan */
   --text-main: white;                      /* Ana metin rengi */
   --text-muted: #f0f0f0;                   /* Açıklama/metin rengi */
   --box-bg: rgba(255,255,255,0.05);       /* Portfolio kutu arka plan */
