@@ -1,9 +1,9 @@
 /* --- Renk Değişkenleri (işlev odaklı) --- */
 :root {
   --bg-main: #0A0A0A;                     /* Genel arka plan */
-  --text-main: white;                      /* Ana metin rengi */
+  --text-main: #cccccc;                      /* Ana metin rengi */
   --text-muted: #f0f0f0;                   /* Açıklama/metin rengi */
-  --box-bg: rgba(255,255,255,0.05);       /* Portfolio kutu arka plan */
+  --box-bg: #0A0A0a;       /* Portfolio kutu arka plan */
   --box-border: rgba(255,255,255,0.1);    /* Kutunun sınır rengi */
   --box-shadow-default: rgba(0,0,0,0.45); /* Kutunun gölge rengi */
   --box-shadow-hover: rgba(0,0,0,0.6);    /* Hover gölge rengi */
@@ -61,7 +61,7 @@ html, body {
   background: var(--box-bg);
   font-family: 'Poppins', sans-serif;
   color: var(--text-main);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1rem;
   border-radius: 18px;
   aspect-ratio: 1/1;
@@ -75,7 +75,6 @@ html, body {
   align-items: center;
 
   backdrop-filter: blur(12px);
-  border: 2px solid var(--box-border);
   box-shadow: 0 6px 18px var(--box-shadow-default);
 
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -405,13 +404,13 @@ html, body {
     font-weight: 310;
     color: var(--title-about);
   }
-  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(4, 1fr); }
   .profile-card { max-width: 500px; padding: 1.5rem 1rem; margin: 0 auto;  }
   .profile-avatar { width: 7rem; height: 7rem; }
 }
 
 @media (max-width: 920px) {
-  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(4, 1fr); }
   .portfolio-title {
     margin-top: 55px;
     margin-bottom: 30px;
@@ -426,6 +425,11 @@ html, body {
 
 
 @media (max-width: 600px) {
+  
+  .portfolio-box p{
+    font-weight: 250;
+  font-size: 0.9rem;
+  }
   .portfolio-wrapper {
     padding-left: 16px;
     padding-right: 16px;
@@ -484,11 +488,15 @@ html, body {
   .slider-btn.next { right: 5px; }
   .profile-card { padding: 1rem; max-width: 85%; margin: 0 auto;  }
   .profile-avatar { width: 6rem; height: 6rem; }
+  .portfolio-box { font-weight: 250; font-size: 0.9rem;
+  }
 }
 
-@media (max-width: 412px) {
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 440px) {
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
     .profile-card { padding: 1rem; max-width: 85%; margin: 0 auto;  }
+    .portfolio-box { font-weight: 220; font-size: 0.8rem;
+  }
 
 }
 

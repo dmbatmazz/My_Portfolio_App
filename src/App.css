@@ -37,6 +37,7 @@ html, body {
 /* Navbar */
 .navbar {
   position: fixed;
+  background-color: #0A0A0A;
   top: 0;
   right: 0;
   left: 0;
@@ -47,6 +48,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+  transition: top 0.3s ease;
 }
 
 .logo {
@@ -212,7 +214,7 @@ html, body {
     top: -100%;
     left: 0;
     width: 100%;
-    background-color: rgba(30, 30, 30, 0.98);
+    background-color: #0a0a0adf;
     backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
