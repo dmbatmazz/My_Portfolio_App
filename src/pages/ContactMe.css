@@ -2,14 +2,14 @@
 :root {
   /* Genel */
   --bg-overlay: rgba(0, 0, 0, 0.5);
-  --bg-popup-start: rgba(16, 16, 16, 0.95);
+  --bg-popup-start: rgba(0, 0, 0, 0.744);
   --bg-popup-end: rgba(32, 32, 32, 0.95);
-  --text-main: #ffffff;
+  --text-main: #b5b3b3;
   --text-muted: #ccc;
 
   /* Buton ve form */
-  --primary-gradient-start: #bcb7fd;
-  --primary-gradient-end: #9891ff;
+  --primary-gradient-start: #756bfeca;
+  --primary-gradient-end: #a39cfdc2;
   --btn-text-color: black;
   --btn-disabled-start: #666666;
   --btn-disabled-end: #555555;
@@ -100,8 +100,11 @@
   color: var(--text-main);
   margin-bottom: 1.5rem;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
   font-size: clamp(1.25rem, 4vw, 2rem);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 350;
+  letter-spacing: 1.3px;
+
 }
 
 
@@ -185,9 +188,12 @@
   border: none;
   border-radius: 0.5rem;
   font-size: clamp(0.875rem, 2vw, 1rem);
-  font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 550;
+  letter-spacing: 1.2px;
+
 }
 
 .submit-btn:hover {
@@ -234,7 +240,7 @@
   background: transparent;
   border: none;
   color: var(--text-main);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   z-index: 1100;
   transition: transform 0.2s ease, color 0.2s ease;

@@ -19,7 +19,7 @@ html, body {
   height: 100%; /* ekran yüksekliğini zorla */
   min-height: 100vh; /* en az tüm ekran kadar olsun */
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #0a0a0a, #0a0a0a, #100329); 
+  background: linear-gradient(to bottom, #0a0a0a, #0a0a0a, #1a0541); 
   color: var(--text-main);
 }
 
@@ -138,14 +138,21 @@ html, body {
 
 .name {
   font-size: 40px;
-  font-weight: bold;
   line-height: 1.2;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 550;
+  letter-spacing: 1.5px;
+
 }
 
 .role {
   color: var(--hero-role);
   font-size: 18px;
   margin-top: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+
 }
 
 .desc {
@@ -163,6 +170,9 @@ html, body {
   border: none;
   cursor: pointer;
   font-weight: 500;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 1.5px;
+
 }
 
 .hire-btn:hover {
