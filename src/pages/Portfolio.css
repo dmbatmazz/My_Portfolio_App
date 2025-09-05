@@ -1,24 +1,33 @@
 /* --- Renk Değişkenleri (işlev odaklı) --- */
 :root {
   --bg-main: #0A0A0A;                     /* Genel arka plan */
-  --text-main: #cccccc;                      /* Ana metin rengi */
-  --text-muted: #f0f0f0;                   /* Açıklama/metin rengi */
-  --box-bg: #0A0A0a;       /* Portfolio kutu arka plan */
+  --text-main: #ffffff;                   /* Ana metin rengi */
+  --text-muted: #f0f0f0;                  /* Açıklama/metin rengi */
+  --box-bg: #0a0a0a83;                      /* Portfolio kutu arka plan */
   --box-border: rgba(255,255,255,0.1);    /* Kutunun sınır rengi */
   --box-shadow-default: rgba(0,0,0,0.45); /* Kutunun gölge rengi */
   --box-shadow-hover: rgba(0,0,0,0.6);    /* Hover gölge rengi */
 
-  --border-gradient-start: #00ff9d;       /* Border animasyon başı */
-  --border-gradient-mid1: #00ccff;        /* Border animasyon ara renk */
-  --border-gradient-mid2: #9b6dff;        /* Border animasyon ara renk */
-  --border-gradient-end: #8400ff;         /* Border animasyon sonu */
+  /* Parlak renkli border (hover için) */
+  --border-gradient-start: #00ff9d;
+  --border-gradient-mid1: #00ccff;
+  --border-gradient-mid2: #9b6dff;
+  --border-gradient-end: #8400ff;
+
+  /* Mat, koyu renkli border (normalde) */
+  --border-gradient-start-muted: #005f4d;
+  --border-gradient-mid1-muted: #004466;
+  --border-gradient-mid2-muted: #3d2d66;
+  --border-gradient-end-muted: #3d005f;
 
   --hover-overlay-bg: rgba(0,0,0,0.65);   /* Hover overlay arka plan */
-  --hover-text: #b19cff;                  /* Hover overlay yazı rengi */
+  --hover-text: #c8bafa;                  /* Hover overlay yazı rengi */
   --project-link: #b19cff;                /* Proje link rengi */
   --project-link-hover: #9b7ffe;          /* Proje link hover rengi */
   --modal-bg: #1e1e1e;     
-  --slider-btn-color: #b19cff;               /* Modal arka plan */
+  --slider-btn-color: #b19cff;            /* Modal arka plan */
+  --title-projects: #bfaefd;            /* Portfolio başlık rengi */
+  --title-projects-phone: #d5c8fdca;       /* Portfolio başlık rengi (telefon) */
 }
 
 /* --- Genel Stil --- */
@@ -37,13 +46,13 @@ html, body {
 }
 
 .portfolio-title {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-top: 100px;
-  color: var(--text-main);
   font-size: 2.2rem;
-  color: var(--title-about);
-  font-family: 'Lato', sans-serif;
-  font-weight: 310;
+  color: var(--title-projects);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  letter-spacing: 1.5px;
 }
 
 /* Grid yapısı */
@@ -61,7 +70,7 @@ html, body {
   background: var(--box-bg);
   font-family: 'Poppins', sans-serif;
   color: var(--text-main);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   border-radius: 18px;
   aspect-ratio: 1/1;
@@ -75,12 +84,11 @@ html, body {
   align-items: center;
 
   backdrop-filter: blur(12px);
-  box-shadow: 0 6px 18px var(--box-shadow-default);
 
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Gradient border animasyonu */
+/* Gradient border animasyonu (normalde MAT renkler) */
 .portfolio-box::before {
   content: '';
   position: absolute;
@@ -89,10 +97,10 @@ html, body {
   border-radius: 18px;
   background: linear-gradient(
     135deg,
-    var(--border-gradient-start),
-    var(--border-gradient-mid1),
-    var(--border-gradient-mid2),
-    var(--border-gradient-end)
+    var(--border-gradient-start-muted),
+    var(--border-gradient-mid1-muted),
+    var(--border-gradient-mid2-muted),
+    var(--border-gradient-end-muted)
   );
   background-size: 300% 300%;
   animation: borderFlow 6s ease infinite;
@@ -100,6 +108,19 @@ html, body {
   -webkit-mask-composite: destination-out;
           mask-composite: exclude;
   z-index: 1;
+  transition: background 0.4s ease;
+}
+
+/* Hover olunca parlak renklere geçiş */
+.portfolio-box:hover::before {
+  background: linear-gradient(
+    135deg,
+    var(--border-gradient-start),
+    var(--border-gradient-mid1),
+    var(--border-gradient-mid2),
+    var(--border-gradient-end)
+  );
+  background-size: 300% 300%;
 }
 
 /* İçerik (proje adı) */
@@ -113,7 +134,6 @@ html, body {
 .portfolio-hover {
   position: absolute;
   inset: 0;
-  background: var(--hover-overlay-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +141,7 @@ html, body {
   gap: 8px;
   color: var(--hover-text);
   font-family: 'Raleway', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.1rem;
   text-align: center;
   letter-spacing: 0.5px;
@@ -381,7 +401,7 @@ html, body {
 }
 
 .profile-btn:hover {
-  background: linear-gradient(135deg, var(--border-gradient-start), var(--border-gradient-mid2));
+  background: linear-gradient(135deg, var(--border-gradient-mid1), var(--border-gradient-end));
   color: #fff;
   border: 1px solid transparent;
   transform: translateY(-2px) scale(1.03);
@@ -402,7 +422,7 @@ html, body {
     font-size: 2.5rem;
     font-family: 'Lato', sans-serif;
     font-weight: 310;
-    color: var(--title-about);
+    color: var(--title-projects);
   }
   .portfolio-grid { grid-template-columns: repeat(4, 1fr); }
   .profile-card { max-width: 500px; padding: 1.5rem 1rem; margin: 0 auto;  }
@@ -417,7 +437,7 @@ html, body {
     font-size: 2rem;
     font-family: 'Lato', sans-serif;
     font-weight: 310;
-    color: var(--title-about);
+    color: var(--title-projects);
   }
   .portfolio-box { width: 90%; margin: 0 auto; }
   .profile-card { max-width: 500px; margin: 0 auto; }
@@ -480,7 +500,7 @@ html, body {
     font-size: 1.5rem;
     font-family: 'Lato', sans-serif;
     font-weight: 310;
-    color: var(--title-about);
+    color: var(--title-projects-phone);
   }
   .project-images img,
   .project-images-slider img { width: 90%; max-height: 60vh; }
