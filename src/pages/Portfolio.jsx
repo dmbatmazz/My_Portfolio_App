@@ -71,6 +71,10 @@ const contactsAppImages = [
   "./Portfolio_photos/contacts2.png",
 ];
 
+const portfolioAppImages = [
+  "./Portfolio_photos/avatar.png",
+];
+
 // Helpers
 const getImagesByProject = (name) => {
   switch (name) {
@@ -90,6 +94,8 @@ const getImagesByProject = (name) => {
       return tcpServerClientImages;
     case "Contacts App":
       return contactsAppImages;
+    case "Portfolio App":
+      return portfolioAppImages;
     default:
       return [];
   }
@@ -113,6 +119,8 @@ const getDescriptionByProject = (name) => {
       return "This project implements a simple TCP server-client architecture using C++ and QT5. The server listens for incoming connections, while the client can send messages to the server and receive responses.";
     case "Contacts App":
       return "This project is a contact management application built with React. It allows users to add, view, and manage their contacts in a user-friendly interface.";
+      case "Portfolio App":
+      return "This project is the app that you are looking right now which is a personal portfolio website built with React. It showcases various projects, skills, and contact information in a visually appealing manner.";
     default:
       return "Project details will be available here soon.";
   }
@@ -134,6 +142,8 @@ const getLinkByProject = (name) => {
       return "https://github.com/dmbatmazz/DiscoverEase";
       case "Contacts App":
       return "https://github.com/dmbatmazz/contacts-app";
+      case "Portfolio App":
+      return "https://github.com/dmbatmazz/My_Portfolio_App";
     default:
       return "#";
   }
@@ -155,6 +165,8 @@ const getLinkLabelByProject = (name) => {
       return "DiscoverEase Codes";
     case "Contacts App":
       return "Contacts App Codes";
+      case "Portfolio App":
+      return "Portfolio App Codes";
     default:
       return "Project codes will be available here soon.";
   }
@@ -162,7 +174,7 @@ const getLinkLabelByProject = (name) => {
 
 const socialLinks = [
     { name: 'Instagram', icon: <Instagram />, url: 'https://instagram.com/dmbatmazz' },
-    { name: 'LinkedIn', icon: <Linkedin />, url: 'https://linkedin.com/in/dmbatmazz' },
+    { name: 'LinkedIn', icon: <Linkedin />, url: 'https://linkedin.com/in/defne-melis-batmaz' },
     { name: 'GitHub', icon: <Github />, url: 'https://github.com/dmbatmazz' },
     { name: 'X', icon: <Twitter />, url: 'https://twitter.com/dmbatmazz' },
   ];
