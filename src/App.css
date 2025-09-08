@@ -24,15 +24,17 @@ html, body {
 }
 
 
-/* Blur efekti main-content üzerinde */
+/* Blur efekti sadece menü/iletisim açıkken çalışsın */
 .main-content {
+  min-height: 100vh;
   transition: filter 0.5s ease;
 }
 
 .main-content.blurred {
   filter: blur(6px);
-  pointer-events: none; /* Blurdayken arka planı tıklanamaz yapar */
+  pointer-events: none; /* Menü açıkken arka plan tıklanamasın */
 }
+
 
 /* Navbar */
 .navbar {
@@ -179,6 +181,8 @@ html, body {
   background-color: var(--btn-primary-hover);
 }
 
+
+
 .hero-image img {
   width: 300px;
   margin-top: 30px;
@@ -194,6 +198,7 @@ html, body {
   .hero-image img {
     width: 250px;
   }
+  
 }
 
 /* ----------- Küçük telefonlar (481px ve altı) ----------- */
