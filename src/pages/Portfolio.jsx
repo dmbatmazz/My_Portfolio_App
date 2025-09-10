@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Portfolio.css";
-import { Instagram, Linkedin, Github, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Github, Twitter, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // --- Profil Avatar ---
 import avatar from "../pages/Portfolio_photos/avatar.png";
@@ -68,9 +68,9 @@ const contacts = [contacts1, contacts2];
 
 // --- Proje Listesi ---
 const projects = [
-  { name: "Portfolio App", desc: "This portfolio website itself.", imgs: portfolioApp, link: "https://github.com/dmbatmazz/My_Portfolio_App" },
   { name: "Mini CRM Dashboard", desc: "Sample CRM dashboard design.", imgs: crm, link: "https://github.com/dmbatmazz/mini-crm-dashboard" },
   { name: "Admin Dashboard", desc: "Dashboard for managing users, analytics and content.", imgs: admin, link: "https://github.com/dmbatmazz/admin-dashboard-app" },
+  { name: "Portfolio App", desc: "This portfolio website itself.", imgs: portfolioApp, link: "https://github.com/dmbatmazz/My_Portfolio_App" },
   { name: "DiscoverEase", desc: "Mobile travel planning app with itinerary creation.", imgs: discoverEase, link: "https://github.com/dmbatmazz/DiscoverEase" },
   { name: "Spotify API", desc: "Spotify API integration to create playlists.", imgs: spotify, link: "https://github.com/dmbatmazz/spotify-api-app" },
   { name: "Travel Agency", desc: "Modern travel agency website design.", imgs: travelAgency, link: "https://github.com/dmbatmazz/travel-agency-web" },
@@ -90,12 +90,39 @@ const socialLinks = [
 // --- Portfolio Component ---
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+
+
+const handleNext = () => {
+  if (!selectedProject) return;
+  // Son resimdeysek bir şey yapma
+  if (currentImgIndex < selectedProject.imgs.length - 1) {
+    setCurrentImgIndex((prev) => prev + 1);
+  }
+};
+
+const handlePrev = () => {
+  if (!selectedProject) return;
+  // İlk resimdeysek bir şey yapma
+  if (currentImgIndex > 0) {
+    setCurrentImgIndex((prev) => prev - 1);
+  }
+};
+  const openProject = (project) => {
+    setSelectedProject(project);
+    setCurrentImgIndex(0);
+  };
 
   return (
     <div className="portfolio-wrapper">
+      {/* --- Profil Kartı --- */}
       <div className="profile-card">
-        <img src={avatar} alt="Defne Melis Batmaz" className="profile-avatar" />
+        <div className="profile-avatar-wrapper">
+          <img src={avatar} alt="Defne Melis Batmaz" className="profile-avatar" />
+        </div>
         <h2 className="profile-name">Defne Melis Batmaz</h2>
         <p className="profile-email">defnemelis8@outlook.com</p>
         <p className="profile-location">Ankara, TR</p>
@@ -113,12 +140,12 @@ export default function Portfolio() {
 
       <div className="projects-list">
         {visibleProjects.map((project, idx) => (
-          <div key={idx} className="project-card">
+          <div key={idx} className="project-card" onClick={() => openProject(project)}>
             <img src={project.imgs[0]} alt={project.name} className="project-img" />
             <div className="project-info">
               <h3>{project.name}</h3>
               <p>{project.desc}</p>
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
                 <Github size={16} /> View on GitHub
               </a>
             </div>
@@ -129,6 +156,42 @@ export default function Portfolio() {
       <div className="view-more-btn">
         <button onClick={() => setShowAll(!showAll)}>{showAll ? "View Less" : "View More"}</button>
       </div>
+
+      {/* --- Modal Slider --- */}
+      {selectedProject && (
+        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSelectedProject(null)}>
+              <X size={24} />
+            </button>
+            <h3>{selectedProject.name}</h3>
+
+            <div className="modal-slider-wrapper">
+  <button
+    className="slider-btn prev"
+    onClick={handlePrev}
+    disabled={currentImgIndex === 0}
+  >
+    <ChevronLeft size={24} />
+  </button>
+  <div className="modal-slider">
+    <img
+      src={selectedProject.imgs[currentImgIndex]}
+      alt={`${selectedProject.name}-${currentImgIndex}`}
+      className="slider-img"
+    />
+  </div>
+  <button
+    className="slider-btn next"
+    onClick={handleNext}
+    disabled={currentImgIndex === selectedProject.imgs.length - 1}
+  >
+    <ChevronRight size={24} />
+  </button>
+</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
