@@ -1,221 +1,134 @@
 import React, { useState } from "react";
 import "./Portfolio.css";
-import avatar from "../assets/avatar.png"; 
-import { Instagram, Linkedin, Github, Twitter } from 'lucide-react';
+import { Instagram, Linkedin, Github, Twitter, X, ChevronLeft, ChevronRight } from "lucide-react";
 
+// --- Profil Avatar ---
+import avatar from "../pages/Portfolio_photos/avatar.png";
 
+// --- Portfolio App ---
+import portfolioImg from "../pages/Portfolio_photos/avatar.png";
+
+// --- Mini CRM Dashboard ---
+import crm1 from "../pages/Portfolio_photos/crm1.png";
+import crm2 from "../pages/Portfolio_photos/crm2.png";
+
+// --- Admin Dashboard ---
+import admin1 from "../pages/Portfolio_photos/admin1.png";
+import admin2 from "../pages/Portfolio_photos/admin2.png";
+import admin3 from "../pages/Portfolio_photos/admin3.png";
+import admin4 from "../pages/Portfolio_photos/admin4.png";
+import admin5 from "../pages/Portfolio_photos/admin5.png";
+import admin6 from "../pages/Portfolio_photos/admin6.png";
+import admin7 from "../pages/Portfolio_photos/admin7.png";
+import admin8 from "../pages/Portfolio_photos/admin8.png";
+import admin9 from "../pages/Portfolio_photos/admin9.png";
+import admin10 from "../pages/Portfolio_photos/admin10.png";
+import admin11 from "../pages/Portfolio_photos/admin11.png";
+
+// --- DiscoverEase ---
+import discover1 from "../pages/Portfolio_photos/discoverease1.png";
+import discover2 from "../pages/Portfolio_photos/discoverease2.png";
+import discover3 from "../pages/Portfolio_photos/discoverease3.png";
+import discover4 from "../pages/Portfolio_photos/discoverease4.png";
+
+// --- Spotify API ---
+import spotify1 from "../pages/Portfolio_photos/spotify-api1.png";
+import spotify2 from "../pages/Portfolio_photos/spotify-api2.png";
+import spotify3 from "../pages/Portfolio_photos/spotify-api3.png";
+import spotify4 from "../pages/Portfolio_photos/spotify-api4.png";
+import spotify5 from "../pages/Portfolio_photos/spotify-api5.png";
+
+// --- Travel Agency ---
+import travel1 from "../pages/Portfolio_photos/travel-agency1.png";
+import travel2 from "../pages/Portfolio_photos/travel-agency2.png";
+
+// --- TCP Server-Client ---
+import tcp1 from "../pages/Portfolio_photos/tcp1.png";
+import tcp2 from "../pages/Portfolio_photos/tcp2.png";
+
+// --- Secure Dashboard ---
+import secure1 from "../pages/Portfolio_photos/secure-dash1.png";
+import secure2 from "../pages/Portfolio_photos/secure-dash2.png";
+import secure3 from "../pages/Portfolio_photos/secure-dash3.png";
+
+// --- Contacts App ---
+import contacts1 from "../pages/Portfolio_photos/contacts1.png";
+import contacts2 from "../pages/Portfolio_photos/contacts2.png";
+
+// --- Diziler ---
+const portfolioApp = [portfolioImg];
+const crm = [crm1, crm2];
+const admin = [admin1, admin2, admin3, admin4, admin5, admin6, admin7, admin8, admin9, admin10, admin11];
+const discoverEase = [discover1, discover2, discover3, discover4];
+const spotify = [spotify1, spotify2, spotify3, spotify4, spotify5];
+const travelAgency = [travel1, travel2];
+const tcp = [tcp1, tcp2];
+const secureDashboard = [secure1, secure2, secure3];
+const contacts = [contacts1, contacts2];
+
+// --- Proje Listesi ---
 const projects = [
-  { name: "TCP Server-Client", desc: "View More" },
-  { name: "Secure Dashboard", desc: "View More" },
-  { name: "Mini CRM Dashboard", desc: "View More" },
-  { name: "Contacts App", desc: "View More" },
-  { name: "Travel Agency", desc: "View More" },
-  { name: "Admin Dashboard", desc: "View More" },
-  { name: "Portfolio App", desc: "View More" },
-  { name: "Spotify API", desc: "View More" },
-  { name: "DiscoverEase", desc: "View More" },
+  { name: "Mini CRM Dashboard", desc: "Sample CRM dashboard design.", imgs: crm, link: "https://github.com/dmbatmazz/mini-crm-dashboard" },
+  { name: "Admin Dashboard", desc: "Dashboard for managing users, analytics and content.", imgs: admin, link: "https://github.com/dmbatmazz/admin-dashboard-app" },
+  { name: "Portfolio App", desc: "This portfolio website itself.", imgs: portfolioApp, link: "https://github.com/dmbatmazz/My_Portfolio_App" },
+  { name: "DiscoverEase", desc: "Mobile travel planning app with itinerary creation.", imgs: discoverEase, link: "https://github.com/dmbatmazz/DiscoverEase" },
+  { name: "Spotify API", desc: "Spotify API integration to create playlists.", imgs: spotify, link: "https://github.com/dmbatmazz/spotify-api-app" },
+  { name: "Travel Agency", desc: "Modern travel agency website design.", imgs: travelAgency, link: "https://github.com/dmbatmazz/travel-agency-web" },
+  { name: "TCP Server-Client", desc: "Simple TCP server-client architecture.", imgs: tcp, link: "https://github.com/dmbatmazz/tcp-server-client" },
+  { name: "Secure Dashboard", desc: "Secure dashboard with authentication.", imgs: secureDashboard, link: "https://github.com/dmbatmazz/Secure-Dashboard" },
+  { name: "Contacts App", desc: "Contact management app built with React.", imgs: contacts, link: "https://github.com/dmbatmazz/contacts-app" },
 ];
 
-// Image lists (string paths). We’ll require() them right before rendering.
-const travelImages = [
-  "./Portfolio_photos/travel-agency1.png",
-  "./Portfolio_photos/travel-agency2.png",
-];
-
-const adminImages = [
-  "./Portfolio_photos/admin1.png",
-  "./Portfolio_photos/admin2.png",
-  "./Portfolio_photos/admin3.png",
-  "./Portfolio_photos/admin4.png",
-  "./Portfolio_photos/admin5.png",
-  "./Portfolio_photos/admin6.png",
-  "./Portfolio_photos/admin7.png",
-  "./Portfolio_photos/admin8.png",
-  "./Portfolio_photos/admin9.png",
-  "./Portfolio_photos/admin10.png",
-  "./Portfolio_photos/admin11.png",
-];
-
-const spotifyImages = [
-  "./Portfolio_photos/spotify-api1.png",
-  "./Portfolio_photos/spotify-api2.png",
-  "./Portfolio_photos/spotify-api3.png",
-  "./Portfolio_photos/spotify-api4.png",
-  "./Portfolio_photos/spotify-api5.png",
-];
-
-const crmImages = [
-  "./Portfolio_photos/crm1.png",
-  "./Portfolio_photos/crm2.png",
-];
-
-const secureDashImages = [
-  "./Portfolio_photos/secure-dash1.png",
-  "./Portfolio_photos/secure-dash2.png",
-  "./Portfolio_photos/secure-dash3.png",
-];
-
-const discoverEaseImages = [
-  "./Portfolio_photos/discoverease1.png",
-  "./Portfolio_photos/discoverease2.png",
-  "./Portfolio_photos/discoverease3.png",
-  "./Portfolio_photos/discoverease4.png",
-];
-
-const tcpServerClientImages = [
-  "./Portfolio_photos/tcp1.png",
-  "./Portfolio_photos/tcp2.png",
-];
-const contactsAppImages = [
-  "./Portfolio_photos/contacts1.png",
-  "./Portfolio_photos/contacts2.png",
-];
-
-const portfolioAppImages = [
-  "./Portfolio_photos/avatar.png",
-];
-
-// Helpers
-const getImagesByProject = (name) => {
-  switch (name) {
-    case "Travel Agency":
-      return travelImages;
-    case "Admin Dashboard":
-      return adminImages;
-    case "Spotify API":
-      return spotifyImages;
-    case "Mini CRM Dashboard":
-      return crmImages;
-    case "Secure Dashboard":
-      return secureDashImages;
-    case "DiscoverEase":
-      return discoverEaseImages;
-    case "TCP Server-Client":
-      return tcpServerClientImages;
-    case "Contacts App":
-      return contactsAppImages;
-    case "Portfolio App":
-      return portfolioAppImages;
-    default:
-      return [];
-  }
-};
-
-const getDescriptionByProject = (name) => {
-  switch (name) {
-    case "Travel Agency":
-      return "This project showcases the design of a modern travel agency website with a focus on clear information architecture and engaging visuals.";
-    case "Admin Dashboard":
-      return "This project demonstrates an admin dashboard interface designed for managing users, analytics, and content with an emphasis on usability and clarity.";
-    case "Spotify API":
-      return "This project utilizes the Spotify API to create playlists and add tracks directly to your Spotify account through an external web application.";
-    case "Mini CRM Dashboard":
-      return "This project is a sample design website for a Customer Relationship Management (CRM) application, focusing on a clean, intuitive, and user-friendly interface.";
-    case "Secure Dashboard":
-      return "This project provides an example of a secure dashboard that restricts unauthorized access, implementing authentication measures before allowing entry.";
-    case "DiscoverEase":
-      return "DiscoverEase is a mobile app for travel planning application that helps users find and organize trips with ease. It features destination discovery, itinerary creation, and booking management.";
-    case "TCP Server-Client":
-      return "This project implements a simple TCP server-client architecture using C++ and QT5. The server listens for incoming connections, while the client can send messages to the server and receive responses.";
-    case "Contacts App":
-      return "This project is a contact management application built with React. It allows users to add, view, and manage their contacts in a user-friendly interface.";
-      case "Portfolio App":
-      return "This project is the app that you are looking right now which is a personal portfolio website built with React. It showcases various projects, skills, and contact information in a visually appealing manner.";
-    default:
-      return "Project details will be available here soon.";
-  }
-};
-
-const getLinkByProject = (name) => {
-  switch (name) {
-    case "Travel Agency":
-      return "https://github.com/dmbatmazz/travel-agency-web";
-    case "Admin Dashboard":
-      return "https://github.com/dmbatmazz/admin-dashboard-app";
-    case "Spotify API":
-      return "https://github.com/dmbatmazz/spotify-api-app";
-    case "Mini CRM Dashboard":
-      return "https://github.com/dmbatmazz/mini-crm-dashboard";
-    case "Secure Dashboard":
-      return "https://github.com/dmbatmazz/Secure-Dashboard";
-    case "DiscoverEase":
-      return "https://github.com/dmbatmazz/DiscoverEase";
-      case "Contacts App":
-      return "https://github.com/dmbatmazz/contacts-app";
-      case "Portfolio App":
-      return "https://github.com/dmbatmazz/My_Portfolio_App";
-    default:
-      return "#";
-  }
-};
-
-const getLinkLabelByProject = (name) => {
-  switch (name) {
-    case "Travel Agency":
-      return "Travel Agency Codes";
-    case "Admin Dashboard":
-      return "Admin Dashboard Codes";
-    case "Spotify API":
-      return "Spotify API Codes";
-    case "Mini CRM Dashboard":
-      return "Mini CRM Dashboard";
-    case "Secure Dashboard":
-      return "Secure Dashboard";
-    case "DiscoverEase":
-      return "DiscoverEase Codes";
-    case "Contacts App":
-      return "Contacts App Codes";
-      case "Portfolio App":
-      return "Portfolio App Codes";
-    default:
-      return "Project codes will be available here soon.";
-  }
-};
-
+// --- Sosyal Linkler ---
 const socialLinks = [
-    { name: 'Instagram', icon: <Instagram />, url: 'https://instagram.com/dmbatmazz' },
-    { name: 'LinkedIn', icon: <Linkedin />, url: 'https://linkedin.com/in/defne-melis-batmaz' },
-    { name: 'GitHub', icon: <Github />, url: 'https://github.com/dmbatmazz' },
-    { name: 'X', icon: <Twitter />, url: 'https://twitter.com/dmbatmazz' },
-  ];
+  { name: "Instagram", icon: <Instagram size={18} />, url: "https://instagram.com/dmbatmazz" },
+  { name: "LinkedIn", icon: <Linkedin size={18} />, url: "https://linkedin.com/in/defne-melis-batmaz" },
+  { name: "GitHub", icon: <Github size={18} />, url: "https://github.com/dmbatmazz" },
+  { name: "X", icon: <Twitter size={18} />, url: "https://twitter.com/dmbatmazz" },
+];
 
+// --- Portfolio Component ---
 export default function Portfolio() {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [slideIndex, setSlideIndex] = useState(0);
-  const maxVisible = 1;
+  const [showAll, setShowAll] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-  const activeName = activeIndex !== null ? projects[activeIndex].name : null;
-  const imageList = activeName ? getImagesByProject(activeName) : [];
-  const total = imageList.length;
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
 
-  const next = () => {
-    if (slideIndex + maxVisible < total) setSlideIndex(slideIndex + maxVisible);
-  };
 
-  const prev = () => {
-    if (slideIndex - maxVisible >= 0) setSlideIndex(slideIndex - maxVisible);
+const handleNext = () => {
+  if (!selectedProject) return;
+  // Son resimdeysek bir şey yapma
+  if (currentImgIndex < selectedProject.imgs.length - 1) {
+    setCurrentImgIndex((prev) => prev + 1);
+  }
+};
+
+const handlePrev = () => {
+  if (!selectedProject) return;
+  // İlk resimdeysek bir şey yapma
+  if (currentImgIndex > 0) {
+    setCurrentImgIndex((prev) => prev - 1);
+  }
+};
+  const openProject = (project) => {
+    setSelectedProject(project);
+    setCurrentImgIndex(0);
   };
 
   return (
     <div className="portfolio-wrapper">
-
-      {/* --- PROFİL KARTI --- */}
+      {/* --- Profil Kartı --- */}
       <div className="profile-card">
-        <img src={avatar} alt="Defne Melis Batmaz" className="profile-avatar" />
+        <div className="profile-avatar-wrapper">
+          <img src={avatar} alt="Defne Melis Batmaz" className="profile-avatar" />
+        </div>
         <h2 className="profile-name">Defne Melis Batmaz</h2>
         <p className="profile-email">defnemelis8@outlook.com</p>
         <p className="profile-location">Ankara, TR</p>
-
         <div className="profile-buttons">
           {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="profile-btn"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="profile-btn">
               <span className="profile-icon">{link.icon}</span>
               <span>{link.name}</span>
             </a>
@@ -225,81 +138,57 @@ export default function Portfolio() {
 
       <h2 className="portfolio-title">My Projects</h2>
 
-      <div className="portfolio-grid">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="portfolio-box"
-            onClick={() => {
-              setActiveIndex(index);
-              setSlideIndex(0);
-            }}
-          >
-            <span className="portfolio-name">{project.name}</span>
-            <div className="portfolio-hover">
+      <div className="projects-list">
+        {visibleProjects.map((project, idx) => (
+          <div key={idx} className="project-card" onClick={() => openProject(project)}>
+            <img src={project.imgs[0]} alt={project.name} className="project-img" />
+            <div className="project-info">
+              <h3>{project.name}</h3>
               <p>{project.desc}</p>
-              <span>View Project</span>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
+                <Github size={16} /> View on GitHub
+              </a>
             </div>
           </div>
         ))}
       </div>
 
-      {activeIndex !== null && (
-        <div
-          className="portfolio-overlay"
-          onClick={() => setActiveIndex(null)}
-        >
-          <div
-            className="portfolio-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3>{activeName}</h3>
+      <div className="view-more-btn">
+        <button onClick={() => setShowAll(!showAll)}>{showAll ? "View Less" : "View More"}</button>
+      </div>
 
-            {/* If project has images, show slider; else show placeholder text */}
-            {imageList.length > 0 ? (
-              <div className="project-content">
-                <div className="project-images-slider">
-                  {imageList
-                    .slice(slideIndex, slideIndex + maxVisible)
-                    .map((img, i) => (
-                      <img
-                        key={`${img}-${i}`}
-                        src={require(`${img}`)}
-                        alt={`${activeName} ${slideIndex + i + 1}`}
-                      />
-                    ))}
+      {/* --- Modal Slider --- */}
+      {selectedProject && (
+        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSelectedProject(null)}>
+              <X size={24} />
+            </button>
+            <h3>{selectedProject.name}</h3>
 
-                  <button
-                    className="slider-btn prev"
-                    onClick={prev}
-                    disabled={slideIndex === 0}
-                    aria-label="Previous image"
-                  >
-                    ◀
-                  </button>
-                  <button
-                    className="slider-btn next"
-                    onClick={next}
-                    disabled={slideIndex + maxVisible >= total}
-                    aria-label="Next image"
-                  >
-                    ▶
-                  </button>
-                </div>
-
-                <p>{getDescriptionByProject(activeName)}</p>
-
-                <a
-                  href={getLinkByProject(activeName)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {getLinkLabelByProject(activeName)}
-                </a>
-              </div>
-            ) : (
-              <p>Project details will be available here soon.</p>
-            )}
+            <div className="modal-slider-wrapper">
+  <button
+    className="slider-btn prev"
+    onClick={handlePrev}
+    disabled={currentImgIndex === 0}
+  >
+    <ChevronLeft size={24} />
+  </button>
+  <div className="modal-slider">
+    <img
+      src={selectedProject.imgs[currentImgIndex]}
+      alt={`${selectedProject.name}-${currentImgIndex}`}
+      className="slider-img"
+    />
+  </div>
+  <button
+    className="slider-btn next"
+    onClick={handleNext}
+    disabled={currentImgIndex === selectedProject.imgs.length - 1}
+  >
+    <ChevronRight size={24} />
+  </button>
+</div>
           </div>
         </div>
       )}
