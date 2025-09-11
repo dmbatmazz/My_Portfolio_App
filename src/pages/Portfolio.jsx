@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Portfolio.css";
 import { Instagram, Linkedin, Github, Twitter, X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -88,34 +88,54 @@ const socialLinks = [
 ];
 
 // --- Portfolio Component ---
+
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [showLoader, setShowLoader] = useState(false);
+  const loaderTimeout = useRef(null);
 
   const visibleProjects = showAll ? projects : projects.slice(0, 2);
 
+  const startLoader = () => {
+    setShowLoader(false);
+    // 1 saniye sonra loader çıkacak
+    loaderTimeout.current = setTimeout(() => {
+      setShowLoader(true);
+    }, 1000);
+  };
 
-const handleNext = () => {
-  if (!selectedProject) return;
-  // Son resimdeysek bir şey yapma
-  if (currentImgIndex < selectedProject.imgs.length - 1) {
-    setCurrentImgIndex((prev) => prev + 1);
-  }
-};
+  const clearLoader = () => {
+    clearTimeout(loaderTimeout.current);
+    setShowLoader(false);
+  };
 
-const handlePrev = () => {
-  if (!selectedProject) return;
-  // İlk resimdeysek bir şey yapma
-  if (currentImgIndex > 0) {
-    setCurrentImgIndex((prev) => prev - 1);
-  }
-};
+  const handleNext = () => {
+    if (!selectedProject) return;
+    if (currentImgIndex < selectedProject.imgs.length - 1) {
+      setCurrentImgIndex((prev) => prev + 1);
+      startLoader();
+    }
+  };
+
+  const handlePrev = () => {
+    if (!selectedProject) return;
+    if (currentImgIndex > 0) {
+      setCurrentImgIndex((prev) => prev - 1);
+      startLoader();
+    }
+  };
+
   const openProject = (project) => {
     setSelectedProject(project);
     setCurrentImgIndex(0);
+    startLoader();
   };
 
+  const handleImgLoad = () => {
+    clearLoader(); // Resim yüklendi, loader kapat
+  };
   return (
     <div className="portfolio-wrapper">
       {/* --- Profil Kartı --- */}
@@ -158,7 +178,7 @@ const handlePrev = () => {
       </div>
 
       {/* --- Modal Slider --- */}
-      {selectedProject && (
+       {selectedProject && (
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedProject(null)}>
@@ -167,28 +187,39 @@ const handlePrev = () => {
             <h3>{selectedProject.name}</h3>
 
             <div className="modal-slider-wrapper">
-  <button
-    className="slider-btn prev"
-    onClick={handlePrev}
-    disabled={currentImgIndex === 0}
-  >
-    <ChevronLeft size={24} />
-  </button>
-  <div className="modal-slider">
-    <img
-      src={selectedProject.imgs[currentImgIndex]}
-      alt={`${selectedProject.name}-${currentImgIndex}`}
-      className="slider-img"
-    />
-  </div>
-  <button
-    className="slider-btn next"
-    onClick={handleNext}
-    disabled={currentImgIndex === selectedProject.imgs.length - 1}
-  >
-    <ChevronRight size={24} />
-  </button>
-</div>
+              <button
+                className="slider-btn prev"
+                onClick={handlePrev}
+                disabled={currentImgIndex === 0}
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <div className="modal-slider">
+                {showLoader && (
+                  <div className="loader-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                )}
+                <img
+                  src={selectedProject.imgs[currentImgIndex]}
+                  alt={`${selectedProject.name}-${currentImgIndex}`}
+                  className="slider-img"
+                  onLoad={handleImgLoad}
+                  style={{ display: showLoader ? "none" : "block" }}
+                />
+              </div>
+
+              <button
+                className="slider-btn next"
+                onClick={handleNext}
+                disabled={currentImgIndex === selectedProject.imgs.length - 1}
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
         </div>
       )}
