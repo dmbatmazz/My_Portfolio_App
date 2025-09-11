@@ -326,17 +326,27 @@ html, body {
 }
 
 .modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.15);
   margin: 0rem .5rem;
   position: relative;
-  background: #111;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 40, 40, 0.85) 0%,
+    rgba(20, 20, 20, 0.9) 100%
+  );
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
   padding: 2rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   max-width: 90%;
   max-height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6),
+              inset 0 1px 0 rgba(255,255,255,0.1);
 }
+
 
 
 .modal-close {
@@ -356,17 +366,6 @@ html, body {
   gap: 1rem; /* Resim ve butonlar arası boşluk */
 }
 
-.slider-btn {
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  border: none;
-  font-size: 1.5rem;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  flex-shrink: 0; /* Buton boyutu değişmesin */
-}
-
 .slider-img {
   max-width: 80%;
   max-height: 70vh;
@@ -376,14 +375,13 @@ html, body {
   margin: 0 auto; /* Yatay ortalama */
 }
 
-
 /* Slider Butonları */
 
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.077));
   color: #fff;
   border: none;
   font-size: 1.5rem;
@@ -391,6 +389,11 @@ html, body {
   border-radius: 0.375rem;
   cursor: pointer;
   z-index: 10;
+    border-radius: 999px; /* Tam yuvarlak "pill" form */
+   backdrop-filter: blur(6px) saturate(150%);
+  -webkit-backdrop-filter: blur(6px) saturate(150%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6),
+              inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .slider-btn.prev {
@@ -519,6 +522,38 @@ html, body {
 .view-more-btn button:hover {
   transform: scale(1.05);
 }
+
+/* --- Loader Dots Bounce --- */
+.loader-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.loader-dots span {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.loader-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
 @media (max-width: 1024px) {
   .portfolio-hover span { display: none; }
   .portfolio-title {

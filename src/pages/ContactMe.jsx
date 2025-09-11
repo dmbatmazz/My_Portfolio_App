@@ -94,7 +94,7 @@ const ContactMe = ({ isOpen, onClose }) => {
             <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleInputChange} required></textarea>
           </div>
           <button type="submit" className="submit-btn" disabled={isLoading}>
-            {isLoading ? 'Gönderiliyor...' : 'Send Message'}
+            {isLoading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
