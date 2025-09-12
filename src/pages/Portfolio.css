@@ -330,9 +330,9 @@ html, body {
   margin: 0rem .5rem;
   position: relative;
   background: linear-gradient(
-    135deg,
-    rgba(40, 40, 40, 0.85) 0%,
-    rgba(20, 20, 20, 0.9) 100%
+    145deg,
+    rgba(109, 109, 120, 0.477) 0%,
+    rgba(72, 72, 80, 0.502) 100%
   );
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
@@ -373,6 +373,8 @@ html, body {
   object-fit: contain;
   display: block;
   margin: 0 auto; /* Yatay ortalama */
+  aspect-ratio: 1 / 1; /* kare kutu */
+  border-radius: 0.5rem;
 }
 
 /* Slider Butonları */
