@@ -218,7 +218,6 @@ html, body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  box-shadow: 0 0 20px rgba(171, 149, 251, 0.275);
   border: 3px solid var(--box-border);
 }
 
@@ -254,8 +253,8 @@ html, body {
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 10px;          
   padding: 0.35rem 0.7rem;      
-  font-size: 0.85rem;            
-  font-weight: 500;
+  font-size: 0.9rem;            
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
@@ -523,7 +522,7 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
 }
 
 .view-more-btn button:hover {

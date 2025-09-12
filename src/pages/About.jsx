@@ -19,17 +19,6 @@ const boxes = [
     ),
   },
   {
-    title: "Interests",
-    icon: <FaHeart size={28} />,
-    content: (
-      <ul>
-        <li>Passionate about tennis, constantly improving my skills.</li>
-        <li>Enjoy watercolor and oil painting as hobbies.</li>
-        <li>Love concerts, theater events, and social coffee meetups.</li>
-      </ul>
-    ),
-  },
-  {
     title: "Languages",
     icon: <FaLanguage size={28} />,
     content: (
@@ -47,6 +36,17 @@ const boxes = [
           <li>Flutter & Dart, Kotlin (Kuika), SQL</li>
         </ul>
       </div>
+    ),
+  },
+  {
+    title: "Interests",
+    icon: <FaHeart size={28} />,
+    content: (
+      <ul>
+        <li>Passionate about tennis, constantly improving my skills.</li>
+        <li>Enjoy watercolor and oil painting as hobbies.</li>
+        <li>Love concerts, theater events, and social coffee meetups.</li>
+      </ul>
     ),
   },
 ];
