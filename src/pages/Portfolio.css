@@ -34,17 +34,22 @@
 html, body {
   overflow-x: hidden;
   background-color: var(--bg-main);
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 /* Ana kapsayıcı */
 .portfolio-wrapper {
-  min-height: 100vh;
+  min-height: 100dvh; /* mobilde gerçek ekran boyuna göre */
   padding: 2rem;
   color: var(--text-main, #ccc);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
+
 .portfolio-title {
   margin-bottom: 50px;
   margin-top: 100px;
@@ -204,7 +209,7 @@ html, body {
 }
 
 .portfolio-wrapper .profile-card{
-  margin-top: 80px;
+  margin-top: clamp(40px, 8vh, 80px);
 }
 
 .profile-avatar {
@@ -590,17 +595,20 @@ html, body {
   
   .portfolio-box p{
     font-weight: 250;
-  font-size: 0.9rem;
+    font-size: 0.9rem;
+    line-height: 1.4; /* okunabilirlik için */
   }
   .portfolio-wrapper {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-left: 0;
-    margin-right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0; /* sağ-sol taşmayı engeller */
     box-sizing: border-box;
+    min-height: 100dvh; /* mobilde tam ekran boyunu alır */
   }
-  .portfolio-wrapper .profile-card{
-    margin-top: 70px;
+
+  .portfolio-wrapper .profile-card {
+    margin-top: clamp(2.5rem, 8vh, 4.5rem);
+    /* küçük ekranda sabit 70px yerine ekran yüksekliğine uyumlu boşluk */
   }
   .profile-card,
   .portfolio-title,
