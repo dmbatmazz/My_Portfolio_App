@@ -559,7 +559,9 @@ html, body {
   0%   { transform: translateY(0); }
   100% { transform: translateY(-10px); }
 }
-
+@media (max-width: 1500px){
+  .portfolio-wrapper{ margin-top: 50px;}
+}
 @media (max-width: 1024px) {
   .portfolio-hover span { display: none; }
   .portfolio-title {

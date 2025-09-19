@@ -55,6 +55,12 @@ import secure3 from "../pages/Portfolio_photos/secure-dash3.png";
 import contacts1 from "../pages/Portfolio_photos/contacts1.png";
 import contacts2 from "../pages/Portfolio_photos/contacts2.png";
 
+// --- EasyPick App
+import easypick1 from "../pages/Portfolio_photos/easypick1.PNG"; 
+import easypick2 from "../pages/Portfolio_photos/easypick2.PNG";
+import easypick3 from "../pages/Portfolio_photos/easypick3.PNG";
+import easypick4 from "../pages/Portfolio_photos/easypick4.PNG";
+
 // --- Diziler ---
 const portfolioApp = [portfolioImg];
 const crm = [crm1, crm2];
@@ -65,6 +71,7 @@ const travelAgency = [travel1, travel2];
 const tcp = [tcp1, tcp2];
 const secureDashboard = [secure1, secure2, secure3];
 const contacts = [contacts1, contacts2];
+const easyPick = [easypick1, easypick2, easypick3, easypick4]; 
 
 // --- Proje Listesi ---
 const projects = [
@@ -74,6 +81,7 @@ const projects = [
   { name: "DiscoverEase", desc: "Mobile travel planning app with itinerary creation.", imgs: discoverEase, link: "https://github.com/dmbatmazz/DiscoverEase" },
   { name: "Spotify API", desc: "Spotify API integration to create playlists.", imgs: spotify, link: "https://github.com/dmbatmazz/spotify-api-app" },
   { name: "Travel Agency", desc: "Modern travel agency website design.", imgs: travelAgency, link: "https://github.com/dmbatmazz/travel-agency-web" },
+  { name: "EasyPick Game App", desc: "My first game app built with Swift ", imgs: easyPick, link: "https://github.com/dmbatmazz/EasyPick" },
   { name: "TCP Server-Client", desc: "Simple TCP server-client architecture.", imgs: tcp, link: "https://github.com/dmbatmazz/tcp-server-client" },
   { name: "Secure Dashboard", desc: "Secure dashboard with authentication.", imgs: secureDashboard, link: "https://github.com/dmbatmazz/Secure-Dashboard" },
   { name: "Contacts App", desc: "Contact management app built with React.", imgs: contacts, link: "https://github.com/dmbatmazz/contacts-app" },
